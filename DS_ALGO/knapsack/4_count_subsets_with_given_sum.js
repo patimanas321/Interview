@@ -4,7 +4,7 @@
  * @param {number} target 
  * @returns True OR False
  */
-function subsetSum(numbs, target) {
+ function subsetSum(numbs, target) {
     const DP = initializeDP(numbs, target);
 
     for (let numberIndex = 1; numberIndex < numbs.length + 1; numberIndex++) {
@@ -14,7 +14,8 @@ function subsetSum(numbs, target) {
             if (num > sum) {
                 DP[numberIndex][sum] = DP[numberIndex - 1][sum];
             } else {
-                DP[numberIndex][sum] = DP[numberIndex - 1][sum - num] || DP[numberIndex - 1][sum];
+                // OR replaced with + from previous implementation
+                DP[numberIndex][sum] = DP[numberIndex - 1][sum - num] + DP[numberIndex - 1][sum];
             }
         }
     }
@@ -22,17 +23,18 @@ function subsetSum(numbs, target) {
     return DP[numbs.length][target];
 }
 
+// False replaced with 0 and True replaced with 1 from previous implementation
 const initializeDP = (numbs, target) => {
     const DP = new Array(numbs.length + 1);
     for (let i = 0; i < numbs.length + 1; i++) {
         DP[i] = new Array(target + 1);
         for (let j = 0; j < target + 1; j++) {
             if (i === 0 && j === 0) {
-                DP[i][j] = true;
+                DP[i][j] = 1;
             } else if (i === 0) {
-                DP[i][j] = false;
+                DP[i][j] = 0;
             } else if (j === 0) {
-                DP[i][j] = true;
+                DP[i][j] = 1;
             } else {
                 DP[i][j] = null;
             }
@@ -41,4 +43,4 @@ const initializeDP = (numbs, target) => {
     return DP;
 };
 
-console.log(subsetSum([2, 3, 7, 8, 10], 11)); // true
+console.log(subsetSum([2, 3, 5, 6, 8, 10], 10)); // 3
