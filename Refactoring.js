@@ -1,11 +1,10 @@
-const value = 10;
 let array = [];
-if (value > 5) {
+if (condition1) {
     array.push(100);
 }
 array.push(200);
 array.push(300);
-if (value < 5) {
+if (condition2) {
     array.push(400);
 }
 array.push(500);
@@ -13,10 +12,10 @@ array.push(500);
 // Refactored
 const value = 10;
 let array = [
-    ...(value > 5 ? [100] : []),
+    ...(condition1 ? [100] : []),
     200,
     300,
-    ...(value < 5 ? [400] : []),
+    ...(condition2 ? [400] : []),
     500
 ];
 

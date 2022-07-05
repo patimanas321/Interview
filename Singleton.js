@@ -13,8 +13,8 @@ const EnumService = (function service() {
       }
       return axios.get(`http://myservice/enums`)
         .then((res) => {
-            data = res;
-            return res;
+          data = res;
+          return res;
         });
     }
   };

@@ -1,0 +1,40 @@
+
+Basic 
+    closure
+    Hoisting
+    data types
+    pass by value 
+    pass by reference
+    objects
+    prototype
+        __proto__
+        console.log()
+        console.log()
+
+Advanced
+    event loop
+    micro task queue / priority queue [Promise]
+    event/callback queue [setTimeout events]
+    async JS
+    new keyword
+        Constructor function
+        Class
+
+JS modules
+    CommonJS pattern (Node JS)
+    ES6 pattern (JS)
+    Typescript
+        ES6 + CommonJS
+
+ES6
+    var let const
+    Generators
+    Iterators
+    Iterables
+    async await (generator function)
+    ...
+    destructuring (array, object)
+        how to missing objects
+    
+Design patterns
+    Singleton
