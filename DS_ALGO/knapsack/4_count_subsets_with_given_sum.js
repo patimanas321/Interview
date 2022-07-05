@@ -25,9 +25,9 @@
 
 // False replaced with 0 and True replaced with 1 from previous implementation
 const initializeDP = (numbs, target) => {
-    const DP = new Array(numbs.length + 1);
+    const DP = [];
     for (let i = 0; i < numbs.length + 1; i++) {
-        DP[i] = new Array(target + 1);
+        DP[i] = [];
         for (let j = 0; j < target + 1; j++) {
             if (i === 0 && j === 0) {
                 DP[i][j] = 1;

@@ -35,9 +35,9 @@ function knapsackProblem(items, capacity) {
 }
 
 function initializeDP(items, capacity) {
-    const DP = new Array(items.length + 1);
+    const DP = [];
     for (let n = 0; n < items.length + 1; n++) {
-        DP[n] = new Array(capacity + 1);
+        DP[n] = [];
         for (let w = 0; w < capacity + 1; w++) {
             if (n === 0 || w === 0) {
                 DP[n][w] = [0, []];
