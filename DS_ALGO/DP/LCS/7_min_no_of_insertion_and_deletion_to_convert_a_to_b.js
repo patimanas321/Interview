@@ -20,7 +20,7 @@ function shortestCommonSuperSequence(str1, str2) {
     const lengthOfLCS = DP[str1.length][str2.length];
 
     // IMPORTANT
-    return str1.length + str2.length - lengthOfLCS;
+    return str1.length - lengthOfLCS;
 }
 
 function initializeDP(str1, str2) {
@@ -36,5 +36,5 @@ function initializeDP(str1, str2) {
 }
 
 console.log(
-    shortestCommonSuperSequence('abcdgh', 'abedfhr') // 9
+    shortestCommonSuperSequence('abcdgh', 'abedfhr') // 2
 );

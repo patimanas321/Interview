@@ -1,4 +1,4 @@
-function longestCommonSuperSequence(str1, str2) {
+function longestRepeatingSubSequence(str1, str2) {
     const DP = initializeDP(str1, str2);
 
     for (let i = 1; i < str1.length + 1; i++) {
@@ -9,18 +9,12 @@ function longestCommonSuperSequence(str1, str2) {
             if (str1Char === str2Char) {
                 DP[i][j] = DP[i - 1][j - 1] + 1;
             } else {
-                DP[i][j] = Math.max(
-                    DP[i - 1][j],
-                    DP[i][j - 1]
-                );
+                DP[i][j] = Math.max(DP[i - 1][j], DP[i][j - 1]);
             }
         }
     }
 
-    const lengthOfLCS = DP[str1.length][str2.length];
-
-    // IMPORTANT
-    return str1.length - lengthOfLCS;
+    return DP[str1.length][str2.length];
 }
 
 function initializeDP(str1, str2) {
@@ -36,5 +30,5 @@ function initializeDP(str1, str2) {
 }
 
 console.log(
-    longestCommonSuperSequence('abcdgh', 'abedfhr') // 2
+    longestRepeatingSubSequence('abac', 'cab') // cabac
 );
