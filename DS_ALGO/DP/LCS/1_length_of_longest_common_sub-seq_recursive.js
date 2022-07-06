@@ -28,4 +28,4 @@ function longestCommonSubSequence(str1, str2, count = 0, memo = {}) {
 
 console.log(
     longestCommonSubSequence('abcdgh', 'abedfhr') // 4
-)
+);
