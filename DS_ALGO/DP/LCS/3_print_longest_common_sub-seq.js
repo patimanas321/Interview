@@ -7,12 +7,16 @@ function longestCommonSubSequence(str1, str2) {
             const str2Char = str2[j - 1];
 
             if (str1Char === str2Char) {
-                DP[i][j] = DP[i - 1][j - 1] + 1;
+                DP[i][j] = DP[i - 1][j - 1] + str1Char;
             } else {
-                DP[i][j] = Math.max(
-                    DP[i - 1][j],
-                    DP[i][j - 1]
-                );
+                const option1 = DP[i - 1][j];
+                const option2 = DP[i][j - 1];
+
+                if (option1.length > option2.length) {
+                    DP[i][j] = option1;
+                } else {
+                    DP[i][j] = option2;
+                }
             }
         }
     }
@@ -25,7 +29,7 @@ function initializeDP(str1, str2) {
     for (let i = 0; i < str1.length + 1; i++) {
         DP[i] = [];
         for (let j = 0; j < str2.length + 1; j++) {
-            DP[i][j] = 0;
+            DP[i][j] = '';
         }
     }
 
@@ -33,5 +37,5 @@ function initializeDP(str1, str2) {
 }
 
 console.log(
-    longestCommonSubSequence('abcdgh', 'abedfhr') // 4
+    longestCommonSubSequence('abcdgh', 'abedfhr') // abdh
 );

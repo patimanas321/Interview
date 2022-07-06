@@ -1,4 +1,4 @@
-function longestCommonSubSequence(str1, str2) {
+function longestCommonSuperSequence(str1, str2) {
     const DP = initializeDP(str1, str2);
 
     for (let i = 1; i < str1.length + 1; i++) {
@@ -17,7 +17,10 @@ function longestCommonSubSequence(str1, str2) {
         }
     }
 
-    return DP[str1.length][str2.length];
+    const lengthOfLCS = DP[str1.length][str2.length];
+
+    // IMPORTANT
+    return str1.length - lengthOfLCS;
 }
 
 function initializeDP(str1, str2) {
@@ -33,5 +36,5 @@ function initializeDP(str1, str2) {
 }
 
 console.log(
-    longestCommonSubSequence('abcdgh', 'abedfhr') // 4
+    longestCommonSuperSequence('abcdgh', 'abedfhr') // 2
 );
