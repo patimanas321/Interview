@@ -1,4 +1,4 @@
-function longestPalindromicSubsequence(str1) {
+function minInsertionsToMakePalindrome(str1) {
     const str2 = str1.split('').reverse(); // We can also read the same string from behind as str2
     const DP = initializeDP(str1, str2);
 
@@ -29,4 +29,4 @@ function initializeDP(str1, str2) {
     return DP;
 }
 
-console.log(longestPalindromicSubsequence('cbbd')); // 2
+console.log(minInsertionsToMakePalindrome('cbbd')); // 2
