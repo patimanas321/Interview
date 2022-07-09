@@ -65,8 +65,8 @@ new MyPromise((resolve) => resolve(100))
     .catch((error) => console.log(error)); // 250
 
 new MyPromise((_, reject) => reject(new Error('Something went wrong!!!')))
-    .then((data) => console.log('I am not called'))
-    .then((data) => console.log('I am not called'))
+    .then((data) => console.log('I am not called 1'))
+    .then((data) => console.log('I am not called 2'))
     .catch((error) => {
         console.log(error);
 
