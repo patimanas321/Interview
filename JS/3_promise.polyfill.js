@@ -42,7 +42,7 @@ class MyPromise {
             // Push a new function into onFulfilled []
             // This accepts data when fulfilled and resolves the new new promise with callback's return value
             this.onFulfilled.push((data) => resolve(callback(data)));
-            // Push a reject into onRejected []
+            // Push reject into onRejected []
             this.onRejected.push(reject)
             this.runCallbacks();
         });
