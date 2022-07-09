@@ -74,6 +74,6 @@ new MyPromise((_, reject) => reject(new Error('Something went wrong!!!')))
     .catch((error) => {
         console.log(error);
 
-        return 100
+        return 100;
     })
     .then((data) => console.log(data)); // 100
