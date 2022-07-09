@@ -1,25 +1,55 @@
-/**
- * @param {string} s
- * @return {number}
- */
- var minMovesToMakePalindrome = function(s, swapCounter = 0) {
-    const arr = typeof s === 'string' ? s.split('') : s;
-    if (arr.length === 0) return swapCounter;
-    
-    while(arr[0] !== arr[arr.length-1]) {
-        let indexOfOtherChar = arr.lastIndexOf(arr[0]);
-        
-        swap(arr, indexOfOtherChar);
-        swapCounter ++;
+const employees = [
+    {
+        id: 1,
+        name: 'John',
+        repartee: [2, 3]
+    },
+    {
+        id: 2,
+        name: 'Govinda',
+        repartee: [4, 5, 6]
+    },
+    {
+        id: 3,
+        name: 'Ben',
+        repartee: [7, 8, 9]
+    },
+    { id: 4, name: 'Kapil' },
+    { id: 5, name: 'Ibha' },
+    { id: 6, name: 'Vidya' },
+    { id: 7, name: 'Mukund' },
+    { id: 8, name: 'Doug' },
+    { id: 9, name: 'Tadd' }
+];
+
+function printEmployees (employees, hierarchyCount=0, tracker={}, res=[]) {
+    for (const employee of employees) {
+        if (tracker[employee.id]) {
+            continue;
+        }
+
+        printSingleEmployee(employee, hierarchyCount, tracker, res);
     }
 
-    return minMovesToMakePalindrome(arr.slice(1, arr.length - 1), swapCounter);
-};
+    return res;
+}
 
-var swap = (string, index) => {
-    const temp = string[index];
-    string[index] = string[index + 1];
-    string[index + 1] = temp;
-};
+function printSingleEmployee(employee, hierarchyCount, tracker, res) {
+    res.push(generateTabs(hierarchyCount) + employee.name);
+    tracker[employee.id] =  true;
+    if ((employee.repartee ?? []).length > 0) {
+        const repartees = employee.repartee.map(id => employees.find(emp => emp.id === id));
+        printEmployees(repartees, hierarchyCount + 1, tracker, res);
+    }
+}
 
-console.log(minMovesToMakePalindrome('aabb'));
+function generateTabs(count) {
+    let res = '';
+    for (let i = 0; i < count; i++) {
+        res += '   ';
+    }
+
+    return res;
+}
+
+console.log(printEmployees(employees));
