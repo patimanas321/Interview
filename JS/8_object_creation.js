@@ -46,3 +46,11 @@ const user3 = new UserCreator3('Manas', 10);
 
 console.log(user1, user2, user3);
 
+/**
+ * new keyword does below
+ * 1. create new empty object and assign its reference to this
+ * 2. assign reference of function phototype / class functions to __proto__
+ * 3. return this
+ * 4. properties are added manually bt developer (this.XXXXX)
+ */
+
