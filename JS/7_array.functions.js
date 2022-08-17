@@ -74,6 +74,8 @@ Array.prototype.myFindIndex = function(callback) {
             return i;
         }
     }
+
+    return -1;
 }
 console.log([1, 2, 3, 4].myFindIndex((val) => val % 3 === 0));
 

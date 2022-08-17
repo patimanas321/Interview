@@ -5,9 +5,15 @@ Promise.simpleRace = (array) => {
             const promise = array[i];
             
             promise.then(data => {
-                if (!isSettled) resolve(data);
+                if (!isSettled) {
+                    isSettled= true;
+                    resolve(data);
+                }
             }).catch(error => {
-                if (!isSettled) reject(error);
+                if (!isSettled) {
+                    isSettled= true;
+                    reject(error);
+                }
             });
         }
     });

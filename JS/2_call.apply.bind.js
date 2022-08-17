@@ -21,3 +21,20 @@ Function.prototype.myApply = function (thisContext, args = []) {
 Function.prototype.myBind = function (thisContext, ...args) {
     return (...newArgs) => this.myCall(thisContext, ...args, ...newArgs);
 }
+
+
+const original = {
+    name: 'Manas',
+    getName: function (message) {
+        return `${message} ${this.name}`;
+    }
+};
+
+const newObj = {
+    name: 'Manas Updated'
+};
+
+console.log(original.getName('hi'));                        // hi Manas
+console.log(original.getName.myCall(newObj, 'hi'));         // hi Manas Updated
+console.log(original.getName.myApply(newObj, ['hi']));      // hi Manas Updated
+console.log(original.getName.myBind(newObj)('hello'));      // hello Manas Updated
